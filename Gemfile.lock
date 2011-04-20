@@ -1,0 +1,20 @@
+GEM
+  specs:
+    bluecloth (2.1.0)
+    haml (3.0.25)
+    makers-mark (0.1.1)
+      bluecloth (>= 2.0.0)
+      nokogiri
+    nokogiri (1.4.4)
+    open4 (1.0.1)
+    slidedown (0.2.0)
+      makers-mark
+      nokogiri
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  haml
+  open4
+  slidedown
