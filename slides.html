@@ -4859,6 +4859,11 @@ jQuery.extend( jQuery.easing,
 
     </script>
     
+      <script type="text/javascript" charset="utf-8">
+        alert('hz');
+
+      </script>
+    
   </head>
   <body>
     <div id="instructions">
@@ -4875,7 +4880,7 @@ jQuery.extend( jQuery.easing,
         
           <div class="">
             <div id="slide-1" class="content">
-              <h3>Where we came from?</h3><p>TestUnit a very straight unit test framework.
+              <h3>Where we came from?</h3><p><em>TestUnit</em> a very <em>straight</em> unit test framework.
 Unit testing was used for ages.</p><p>Unit test consists of:</p><ul>
 <li>Workflow</li>
 <li>Assertions</li>
@@ -4885,8 +4890,8 @@ Unit testing was used for ages.</p><p>Unit test consists of:</p><ul>
         
           <div class=" ">
             <div id="slide-2" class="content">
-              <h3>Where should we go?</h3><h5>Describe and test <strong>business logic</strong>
-</h5><h5>in <strong>agile development proccess</strong>
+              <h3>Where should we go?</h3><h5>Describe and test <em>business logic</em>
+</h5><h5>in <em>agile development proccess</em>
 </h5>
             </div>
           </div>
@@ -4894,17 +4899,600 @@ Unit testing was used for ages.</p><p>Unit test consists of:</p><ul>
           <div class="">
             <div id="slide-3" class="content">
               <h3>We should remember that</h3><ul>
-<li>There are projects in Railsware outside of RatePoint</li>
-<li>This presentation cover only <strong>AGILE PROCESS</strong>
+<li>There are projects in Railsware outside of <strong>RatePoint</strong>
 </li>
-<li>Ruby or Rails is based on Ruby which is object oriented programming language.</li>
+<li>This presentation cover only <em>AGILE PROCESS</em>
+</li>
+<li>Ruby or Rails is based on Ruby which is <em>object oriented</em> programming language.</li>
+</ul>
+            </div>
+          </div>
+        
+          <div class=" code">
+            <div id="slide-4" class="content">
+              <h3>Describing the behavior in Rspec</h3><p>Every <strong>unit test</strong> is a workflow</p><ol>
+<li>Step 1: Construct user with valid attributes</li>
+<li>Step 2: Call save method</li>
+<li>Assertion: Email confirmation letter is delivered.</li>
+</ol>
+<p>Every <em>spec</em> is a requirement that consists of:</p><ul>
+<li>
+<em>Subject</em>
+
+<ul>
+<li>New user with valid attributes</li>
+</ul>
+</li>
+<li>
+<em>Context</em>
+
+<ul>
+<li>When saved</li>
+</ul>
+</li>
+<li>
+<em>Behavior</em>
+
+<ul>
+<li>Confirmation letter should be delivered</li>
+</ul>
+</li>
+</ul>
+            </div>
+          </div>
+        
+          <div class=" ">
+            <div id="slide-5" class="content">
+              <h1>
+<em>Subject</em> is a <em>code block</em>
+</h1><h3>Desinged to be a convention.</h3><h3>Rather than create instance <strong>variables</strong> with <strong>different names</strong>
+</h3>
+            </div>
+          </div>
+        
+          <div class="
+">
+            <div id="slide-6" class="content">
+              <h3>Describe subject in rspec</h3><p>Example:
+</p>
+<div class="highlight ruby code highlight"><pre><span class="n">describe</span> <span class="no">User</span> <span class="k">do</span>
+    <span class="n">subject</span> <span class="p">{</span> <span class="no">User</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="vi">@valid_attributes</span><span class="p">)</span> <span class="p">}</span>
+    <span class="c1"># or</span>
+    <span class="n">subject</span> <span class="p">{</span> <span class="no">Factory</span><span class="o">.</span><span class="n">build</span><span class="p">(</span><span class="ss">:user</span><span class="p">)</span>
+
+    <span class="n">describe</span> <span class="s2">".activated named scope"</span> <span class="k">do</span>
+        <span class="n">subject</span> <span class="p">{</span> <span class="no">User</span><span class="o">.</span><span class="n">activated</span> <span class="p">}</span>
+    <span class="k">end</span>
+<span class="k">end</span>
+</pre></div><p>Default subject is: <code>described_class.new</code></p><p>And that's for a reason.</p>
+            </div>
+          </div>
+        
+          <div class="">
+            <div id="slide-7" class="content">
+              <h3>Describing behavior</h3><p>Benefits of subject:</p><ul>
+<li>Delegate expectation to subject
+
+<ul>
+<li>all <em>should</em> goes to subject by default</li>
+</ul>
+</li>
+<li>Delegate custom methods to subject (#its)
+
+<ul>
+<li>we can specify behavior of some subject property</li>
+</ul>
+</li>
+</ul>
+<p>Matchers:</p><ul>
+<li>Built-in</li>
+<li>Custom</li>
 </ul>
             </div>
           </div>
         
           <div class="">
-            <div id="slide-4" class="content">
-              <h1>Questions?</h1>
+            <div id="slide-8" class="content">
+              <h3>Expectation usage example</h3><div class="highlight ruby code highlight"><pre><span class="n">describe</span> <span class="no">User</span> <span class="k">do</span>
+    <span class="n">subject</span> <span class="p">{</span> <span class="n">build_user_with_factory</span> <span class="p">}</span>
+
+    <span class="n">it</span> <span class="p">{</span> <span class="n">should</span> <span class="n">be_valid</span> <span class="p">}</span>
+
+    <span class="n">its</span><span class="p">(</span><span class="ss">:profile</span><span class="p">)</span> <span class="p">{</span> <span class="n">should_not</span> <span class="n">be_completed</span> <span class="p">}</span> <span class="c1"># 2.0</span>
+    <span class="c1"># subject.profile.completed?.should be_true</span>
+
+    <span class="n">its</span><span class="p">(</span><span class="s2">"tasks.first"</span><span class="p">)</span> <span class="p">{</span><span class="n">should</span> <span class="n">be_a</span><span class="p">(</span><span class="no">FindFriendsTask</span><span class="p">)}</span> <span class="c1"># 2.0</span>
+    <span class="c1"># subject.tasks.first.is_a?(FindFriendsTask).should be_true </span>
+
+<span class="k">end</span>
+</pre></div>
+            </div>
+          </div>
+        
+          <div class="">
+            <div id="slide-9" class="content">
+              <h3>New property emerged</h3><h2>Description-less example</h2><h5>Examples description is a <strong>maintenance</strong> point we are trying to <em>reduce</em>
+</h5>
+            </div>
+          </div>
+        
+          <div class="">
+            <div id="slide-10" class="content">
+              <h3>Matchers</h3><p>Internal matchers:</p><ul>
+<li>be_*
+
+<ul>
+<li>Accepts <em>any method</em> with question mark and it's arguments</li>
+</ul>
+</li>
+<li>include</li>
+<li>==</li>
+</ul>
+<p>External libraries:</p><ul>
+<li>Shoulda</li>
+<li>Remarkable</li>
+</ul>
+<p>Beware: <strong>copypaste</strong> is not <em>BDD</em>!</p>
+            </div>
+          </div>
+        
+          <div class="">
+            <div id="slide-11" class="content">
+              <h3>Describe the context</h3><p><b>This is where the problem is!</b></p><p>Rspec is designed to describe context-oriented logic</p><p><em>Business logic</em> is always context oriented</p><p>Describe <em>non context-oriented logic</em> in rspec has <strong>no benefits</strong></p>
+            </div>
+          </div>
+        
+          <div class="">
+            <div id="slide-12" class="content">
+              <h3>What is context dependent logic?</h3><p>Context-oriented logic - from less context dependent to very context dependent:</p><ul>
+<li>
+<em>Utility</em> functions
+
+<ul>
+<li>All math and any other function that doesn't data from nowhere except it's arguments.</li>
+</ul>
+</li>
+<li>
+<em>Proxy</em> like objects and software
+
+<ul>
+<li>Sometimes have an inner state</li>
+</ul>
+</li>
+<li>
+<em>Stateful</em> software
+
+<ul>
+<li>databases and libraries that wrap them</li>
+</ul>
+</li>
+<li>
+<em>Business</em> logic
+
+<ul>
+<li>That is what most of us do</li>
+</ul>
+</li>
+</ul>
+            </div>
+          </div>
+        
+          <div class=" ">
+            <div id="slide-13" class="content">
+              <h3>Rspec techniques to describe context</h3><ul>
+<li>Tools
+
+<ul>
+<li>#let</li>
+<li>#context</li>
+</ul>
+</li>
+<li>Techniques
+
+<ul>
+<li>nesting context blocks</li>
+<li>Dynamic context</li>
+<li>Context callbacks</li>
+</ul>
+</li>
+</ul>
+            </div>
+          </div>
+        
+          <div class=" ">
+            <div id="slide-14" class="content">
+              <h2>
+<em>#let</em> function for dynamic context</h2><h3>designed for <em>lazy loading</em> objects to the context as they needed</h3>
+            </div>
+          </div>
+        
+          <div class=" ">
+            <div id="slide-15" class="content">
+              <h3>Some source code</h3><div style="font-size: 20px">
+<div class="highlight ruby code highlight"><pre>    <span class="k">def</span> <span class="nf">let</span><span class="p">(</span><span class="nb">name</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">block</span><span class="p">)</span> 
+        <span class="n">define_method</span> <span class="nb">name</span> <span class="k">do</span> 
+            <span class="vi">@assignments</span> <span class="o">||=</span> <span class="p">{}</span> 
+            <span class="vi">@assignments</span><span class="o">[</span><span class="nb">name</span><span class="o">]</span> <span class="o">||=</span> <span class="nb">instance_eval</span><span class="p">(</span><span class="o">&amp;</span><span class="n">block</span><span class="p">)</span> 
+        <span class="k">end</span> 
+    <span class="k">end</span>
+    
+    <span class="k">def</span> <span class="nf">let!</span><span class="p">(</span><span class="nb">name</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">block</span><span class="p">)</span> 
+        <span class="n">let</span><span class="p">(</span><span class="nb">name</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">block</span><span class="p">)</span> 
+        <span class="n">before</span> <span class="p">{</span> <span class="nb">__send__</span><span class="p">(</span><span class="nb">name</span><span class="p">)</span> <span class="p">}</span> 
+    <span class="k">end</span>
+    
+    <span class="c1"># sampe principle of lazy load for subject</span>
+    
+    <span class="k">def</span> <span class="nf">subject</span>
+        <span class="k">if</span> <span class="n">defined?</span><span class="p">(</span><span class="vi">@original_subject</span><span class="p">)</span>
+            <span class="vi">@original_subject</span>
+        <span class="k">else</span>
+            <span class="vi">@original_subject</span> <span class="o">=</span> <span class="nb">instance_eval</span><span class="p">(</span><span class="o">&amp;</span><span class="nb">self</span><span class="o">.</span><span class="n">class</span><span class="o">.</span><span class="n">subject</span><span class="p">)</span>
+        <span class="k">end</span>
+    <span class="k">end</span>
+ 
+</pre></div>
+</div>
+            </div>
+          </div>
+        
+          <div class=" ">
+            <div id="slide-16" class="content">
+              <h3>#let basic usage example</h3><div class="highlight ruby code highlight"><pre><span class="n">describe</span> <span class="no">User</span> <span class="k">do</span>
+    <span class="n">describe</span> <span class="s2">".activated named scope"</span> <span class="k">do</span>
+
+        <span class="n">subject</span> <span class="p">{</span> <span class="no">User</span><span class="o">.</span><span class="n">activated</span> <span class="p">}</span>
+
+        <span class="n">let</span><span class="p">(</span><span class="ss">:activated_user</span><span class="p">)</span> <span class="p">{</span> <span class="o">&lt;</span><span class="n">factory</span><span class="o">&gt;</span> <span class="p">}</span>
+        <span class="n">let</span><span class="p">(</span><span class="ss">:not_activated_user</span><span class="p">)</span> <span class="p">{</span> <span class="o">&lt;</span><span class="n">factory</span><span class="o">&gt;</span> <span class="p">}</span>
+
+        <span class="n">it</span> <span class="p">{</span><span class="n">should</span> <span class="kp">include</span><span class="p">(</span><span class="n">activated_user</span><span class="p">)</span>
+        <span class="n">it</span> <span class="p">{</span><span class="n">should_not</span> <span class="kp">include</span><span class="p">(</span><span class="n">not_activated_user</span><span class="p">)</span>
+    <span class="k">end</span>
+<span class="k">end</span> 
+</pre></div>
+            </div>
+          </div>
+        
+          <div class=" ">
+            <div id="slide-17" class="content">
+              <h3>#let calls are chainable</h3><div class="highlight ruby code highlight"><pre><span class="n">let</span><span class="p">(</span><span class="ss">:user</span><span class="p">)</span> <span class="p">{</span> <span class="o">.</span><span class="n">.</span><span class="o">.</span> <span class="p">}</span>
+<span class="n">let</span><span class="p">(</span><span class="ss">:community</span><span class="p">)</span> <span class="p">{</span> <span class="o">.</span><span class="n">.</span><span class="o">.</span> <span class="p">}</span>
+
+<span class="n">let</span><span class="p">(</span><span class="ss">:membership</span><span class="p">)</span> <span class="p">{</span>
+    <span class="no">Membership</span><span class="o">.</span><span class="n">new</span><span class="p">(</span>
+        <span class="ss">:user</span> <span class="o">=&gt;</span> <span class="n">user</span><span class="p">,</span> <span class="ss">:community</span> <span class="o">=&gt;</span> <span class="n">community</span>
+    <span class="p">)</span> 
+<span class="p">}</span> 
+</pre></div>
+            </div>
+          </div>
+        
+          <div class=" ">
+            <div id="slide-18" class="content">
+              <h3>Bang version of #let</h3><p>Will create user and at once load it to the context</p><div class="highlight ruby code highlight"><pre><span class="n">let!</span><span class="p">(</span><span class="ss">:user</span><span class="p">)</span> <span class="p">{</span> <span class="o">.</span><span class="n">.</span><span class="o">.</span> <span class="p">}</span>
+</pre></div>
+            </div>
+          </div>
+        
+          <div class=" ">
+            <div id="slide-19" class="content">
+              <h3>Nested #context</h3><h5>Designed to test <em>non-linear workflow</em>
+</h5>
+            </div>
+          </div>
+        
+          <div class=" ">
+            <div id="slide-20" class="content">
+              <h3>Nested context to test workflow</h3><div class="highlight ruby code highlight"><pre><span class="n">describe</span> <span class="no">Ticket</span> <span class="k">do</span>
+
+  <span class="n">context</span> <span class="s2">"after save!"</span> <span class="k">do</span>
+
+    <span class="n">it</span> <span class="p">{</span> <span class="n">should</span> <span class="n">be_new</span> <span class="p">}</span>
+
+    <span class="n">context</span> <span class="s2">"after approved  by admin"</span> <span class="k">do</span>
+      <span class="n">it</span> <span class="p">{</span><span class="n">should</span> <span class="n">be_approved</span><span class="p">}</span> 
+    <span class="k">end</span>
+
+    <span class="n">context</span> <span class="s2">"after declined by admin"</span> <span class="k">do</span>
+      <span class="n">it</span> <span class="p">{</span> <span class="n">should</span> <span class="n">be_declined</span> <span class="p">}</span>
+    <span class="k">end</span>
+
+  <span class="k">end</span>
+<span class="k">end</span> 
+</pre></div>
+            </div>
+          </div>
+        
+          <div class=" ">
+            <div id="slide-21" class="content">
+              <h3>New property</h3><h1>Spec Outline</h1>
+            </div>
+          </div>
+        
+          <div class=" ">
+            <div id="slide-22" class="content">
+              <h3>#context + #let =</h3><h3>Pattern Matches + Context Callbacks</h3>
+            </div>
+          </div>
+        
+          <div class=" 
+">
+            <div id="slide-23" class="content">
+              <h3>"Pattern matching" (c) S. Boiko</h3><p>Use to describe utitlity functions</p><div class="highlight ruby code highlight"><pre><span class="n">describe</span> <span class="no">BooleanExpression</span><span class="p">,</span> <span class="s2">".run"</span> <span class="k">do</span>
+
+    <span class="n">subject</span> <span class="p">{</span><span class="no">Expression</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">string</span><span class="p">)}</span>
+
+    <span class="n">context</span> <span class="s2">"with '&amp;' and both true"</span> <span class="k">do</span>
+        <span class="n">let</span><span class="p">(</span><span class="ss">:string</span><span class="p">)</span> <span class="p">{</span> <span class="s2">"true &amp; true"</span> <span class="p">}</span>
+        <span class="n">it</span> <span class="p">{</span><span class="n">should</span> <span class="n">be_true</span> <span class="p">}</span>
+    <span class="k">end</span>
+
+    <span class="n">context</span> <span class="s2">"with '&amp;' and one false"</span> <span class="k">do</span>
+        <span class="n">let</span><span class="p">(</span><span class="ss">:string</span><span class="p">)</span> <span class="p">{</span> <span class="s2">"false &amp; true"</span> <span class="p">}</span>
+        <span class="n">it</span> <span class="p">{</span><span class="n">should</span> <span class="n">be_false</span> <span class="p">}</span>
+    <span class="k">end</span>
+
+<span class="k">end</span> 
+</pre></div>
+            </div>
+          </div>
+        
+          <div class=" ">
+            <div id="slide-24" class="content">
+              <h3>Most complicated example in this presentation</h3><div style="overflow: hidden; font-size: 16px">
+<div style=" padding-top: 0px" class="left" st>
+<pre style="font-family: monospace;">
+
+
+    3
+
+
+
+
+  2   
+      4   6
+
+
+
+
+        5
+1           7
+</pre>
+</div>
+
+<div class="left">
+<div class="highlight ruby code highlight"><pre>    <span class="n">describe</span> <span class="no">Product</span> <span class="k">do</span>
+    
+        <span class="n">subject</span> <span class="p">{</span> <span class="no">Factory</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="ss">:product</span><span class="p">)</span> <span class="p">}</span>
+        
+        <span class="n">context</span> <span class="s2">"after save"</span> <span class="k">do</span>
+        
+        <span class="n">before</span> <span class="p">{</span> 
+            <span class="n">subject</span><span class="o">.</span><span class="n">owner</span><span class="o">.</span><span class="n">confirmed</span> <span class="o">=</span> <span class="n">_confirmed</span>
+            <span class="n">subject</span><span class="o">.</span><span class="n">save!</span>
+        <span class="p">}</span>
+        
+        <span class="n">context</span> <span class="s2">"when owner is confirmed"</span> <span class="k">do</span>
+            <span class="n">let</span><span class="p">(</span><span class="ss">:_confirmed</span><span class="p">)</span> <span class="p">{</span> <span class="kp">true</span> <span class="p">}</span>
+            <span class="n">it</span> <span class="p">{</span> <span class="n">should</span> <span class="n">be_delivered</span> <span class="p">}</span>
+        <span class="k">end</span>
+        
+        <span class="n">context</span> <span class="s2">"when owner is not confirmed"</span> <span class="k">do</span>
+            <span class="n">let</span><span class="p">(</span><span class="ss">:_confirmed</span><span class="p">)</span> <span class="p">{</span> <span class="kp">false</span> <span class="p">}</span>
+            <span class="n">it</span> <span class="p">{</span> <span class="n">should_not</span> <span class="n">be_delivered</span> <span class="p">}</span>
+        <span class="k">end</span>
+    
+    <span class="k">end</span>
+</pre></div>
+</div>
+<div class="clear"></div>
+</div>
+            </div>
+          </div>
+        
+          <div class=" ">
+            <div id="slide-25" class="content">
+              <h3>Look and feel</h3><div style="font-size: 10px">
+
+<div class="left">
+<div class="highlight ruby code highlight"><pre>    <span class="n">context</span> <span class="s2">"student"</span> <span class="k">do</span>
+
+    <span class="n">let</span><span class="p">(</span><span class="ss">:school</span><span class="p">)</span> <span class="p">{</span> <span class="no">Factory</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="ss">:school</span><span class="p">)</span> <span class="p">}</span>
+
+    <span class="n">let</span><span class="p">(</span><span class="ss">:team</span><span class="p">)</span> <span class="p">{</span> <span class="no">Factory</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="ss">:team</span><span class="p">,</span> <span class="ss">:school</span> <span class="o">=&gt;</span> <span class="n">school</span><span class="p">)</span> <span class="p">}</span>
+    
+    <span class="n">subject</span> <span class="k">do</span>
+      <span class="no">Factory</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="ss">:student</span><span class="p">,</span> <span class="ss">:team</span> <span class="o">=&gt;</span> <span class="n">team</span><span class="p">,</span> <span class="ss">:school</span> <span class="o">=&gt;</span> <span class="n">school</span><span class="p">)</span>
+    <span class="k">end</span>
+
+    <span class="n">it</span> <span class="p">{</span> <span class="n">should</span> <span class="n">be_valid</span> <span class="p">}</span>
+
+    <span class="n">context</span> <span class="s2">"match scheduler"</span> <span class="k">do</span>
+
+      <span class="n">before</span> <span class="p">{</span> <span class="n">subject</span> <span class="p">}</span> 
+
+      <span class="n">let!</span><span class="p">(</span><span class="ss">:opponent</span><span class="p">)</span> <span class="k">do</span>
+        <span class="no">Factory</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="ss">:student</span><span class="p">,</span> <span class="ss">:team</span> <span class="o">=&gt;</span> <span class="n">team</span><span class="p">,</span> <span class="ss">:school</span> <span class="o">=&gt;</span> <span class="n">school</span><span class="p">)</span>
+      <span class="k">end</span>
+
+      <span class="n">let!</span><span class="p">(</span><span class="ss">:competition</span><span class="p">)</span> <span class="p">{</span> <span class="no">Factory</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="ss">:competition</span><span class="p">,</span> <span class="ss">:team</span> <span class="o">=&gt;</span> <span class="n">team</span><span class="p">)</span> <span class="p">}</span>
+
+      <span class="n">its</span><span class="p">(</span><span class="ss">:upcoming_matches</span><span class="p">)</span> <span class="p">{</span> <span class="n">should_not</span> <span class="n">be_empty</span> <span class="p">}</span>
+      <span class="n">its</span><span class="p">(</span><span class="ss">:next_opponent</span><span class="p">)</span>    <span class="p">{</span> <span class="n">should</span> <span class="o">==</span> <span class="n">opponent</span> <span class="p">}</span> 
+      <span class="n">its</span><span class="p">(</span><span class="ss">:current_match</span><span class="p">)</span>    <span class="p">{</span> <span class="n">should</span> <span class="n">be_nil</span> <span class="p">}</span> 
+      <span class="n">its</span><span class="p">(</span><span class="ss">:next_match</span><span class="p">)</span>       <span class="p">{</span> <span class="n">should</span> <span class="o">==</span> <span class="n">opponent</span><span class="o">.</span><span class="n">next_match</span> <span class="p">}</span>
+
+      <span class="n">context</span> <span class="s2">"competition started"</span> <span class="k">do</span>
+        <span class="n">before</span> <span class="p">{</span> <span class="n">competition</span><span class="o">.</span><span class="n">start!</span> <span class="p">}</span>
+        <span class="n">its</span><span class="p">(</span><span class="ss">:current_match</span><span class="p">)</span> <span class="p">{</span><span class="n">should</span> <span class="o">==</span> <span class="n">competition</span><span class="o">.</span><span class="n">matches</span><span class="o">.</span><span class="n">first</span><span class="p">}</span>
+      <span class="k">end</span>
+
+      <span class="n">context</span> <span class="s2">"after_destroy"</span> <span class="k">do</span>
+        <span class="n">before</span> <span class="p">{</span> <span class="n">subject</span><span class="o">.</span><span class="n">destroy</span> <span class="p">}</span>
+        <span class="n">its</span><span class="p">(</span><span class="ss">:team</span><span class="p">)</span> <span class="p">{</span> <span class="n">should_not</span> <span class="n">be_destroyed</span> <span class="p">}</span>
+      <span class="k">end</span>
+
+    <span class="k">end</span>
+  <span class="k">end</span> 
+</pre></div>
+</div>
+
+<div class="right">
+<div class="highlight ruby code highlight"><pre>    <span class="n">context</span> <span class="s2">"match scheduler"</span> <span class="k">do</span>
+
+    <span class="n">before</span><span class="p">(</span><span class="ss">:each</span><span class="p">)</span> <span class="k">do</span>
+      <span class="n">school</span> <span class="o">=</span> <span class="no">Factory</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="ss">:school</span><span class="p">)</span>
+      <span class="vi">@team</span> <span class="o">=</span> <span class="no">Factory</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="ss">:team</span><span class="p">,</span> <span class="ss">:school</span> <span class="o">=&gt;</span> <span class="n">school</span><span class="p">)</span>
+      <span class="vi">@student1</span> <span class="o">=</span> <span class="no">Factory</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="ss">:student</span><span class="p">,</span> <span class="ss">:team</span> <span class="o">=&gt;</span> <span class="vi">@team</span><span class="p">,</span> <span class="ss">:school</span> <span class="o">=&gt;</span> <span class="n">school</span><span class="p">)</span>
+      <span class="vi">@student2</span> <span class="o">=</span> <span class="no">Factory</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="ss">:student</span><span class="p">,</span> <span class="ss">:team</span> <span class="o">=&gt;</span> <span class="vi">@team</span><span class="p">,</span> <span class="ss">:school</span> <span class="o">=&gt;</span> <span class="n">school</span><span class="p">)</span>
+      <span class="vi">@competition</span> <span class="o">=</span> <span class="no">Factory</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="ss">:competition</span><span class="p">,</span> <span class="ss">:team</span> <span class="o">=&gt;</span> <span class="vi">@team</span><span class="p">)</span>
+    <span class="k">end</span>
+
+    <span class="n">describe</span> <span class="s2">"upcoming_matches"</span> <span class="k">do</span>
+      <span class="n">it</span> <span class="s2">"should return upcoming match for particular student"</span> <span class="k">do</span>
+        <span class="vi">@student1</span><span class="o">.</span><span class="n">upcoming_matches</span><span class="o">.</span><span class="n">first</span><span class="o">.</span><span class="n">id</span><span class="o">.</span><span class="n">should</span> <span class="o">==</span> <span class="vi">@student2</span><span class="o">.</span><span class="n">upcoming_matches</span><span class="o">.</span><span class="n">first</span><span class="o">.</span><span class="n">id</span>
+      <span class="k">end</span>
+    <span class="k">end</span>
+
+    <span class="n">describe</span> <span class="s2">"next_opponent"</span> <span class="k">do</span>
+      <span class="n">it</span> <span class="s2">"should return correct opponent for student"</span> <span class="k">do</span>
+        <span class="vi">@student2</span><span class="o">.</span><span class="n">next_opponent</span><span class="o">.</span><span class="n">should</span> <span class="o">==</span> <span class="vi">@student1</span>
+        <span class="vi">@student1</span><span class="o">.</span><span class="n">next_opponent</span><span class="o">.</span><span class="n">should</span> <span class="o">==</span> <span class="vi">@student2</span>
+      <span class="k">end</span>
+    <span class="k">end</span>
+
+    <span class="n">describe</span> <span class="s2">"current_match"</span> <span class="k">do</span>
+      <span class="n">it</span> <span class="s2">"should return started match for student"</span> <span class="k">do</span>
+        <span class="vi">@student1</span><span class="o">.</span><span class="n">current_match</span><span class="o">.</span><span class="n">should</span> <span class="n">be_nil</span>
+        <span class="vi">@competition</span><span class="o">.</span><span class="n">start!</span>
+        <span class="vi">@competition</span><span class="o">.</span><span class="n">matches</span><span class="o">.</span><span class="n">first</span><span class="o">.</span><span class="n">id</span><span class="o">.</span><span class="n">should</span> <span class="o">==</span> <span class="vi">@student1</span><span class="o">.</span><span class="n">current_match</span><span class="o">.</span><span class="n">id</span>
+      <span class="k">end</span>
+    <span class="k">end</span>
+
+  <span class="k">end</span>   
+</pre></div>
+</div>
+</div><div class="clear"></div>
+            </div>
+          </div>
+        
+          <div class=" 
+">
+            <div id="slide-26" class="content">
+              <h5>Come back to:</h5><h3>Custom matchers</h3><h5>A class with very clean api recognized by Rspec</h5>
+            </div>
+          </div>
+        
+          <div class=" ">
+            <div id="slide-27" class="content">
+              <h3>Custom matcher that test validation</h3><div class="highlight ruby code highlight"><pre><span class="n">describe</span> <span class="no">User</span> <span class="k">do</span> 
+    <span class="n">it</span> <span class="p">{</span> <span class="n">should</span> <span class="n">accept_values_for</span><span class="p">(</span>
+        <span class="ss">:email</span><span class="p">,</span> <span class="s2">"john@example.com"</span><span class="p">,</span> <span class="s2">"lambda@gusiev.com"</span>
+    <span class="p">)}</span>
+    <span class="n">it</span> <span class="p">{</span> <span class="n">should_not</span> <span class="n">accept_values_for</span><span class="p">(</span>
+        <span class="ss">:email</span><span class="p">,</span> <span class="s2">"invalid"</span><span class="p">,</span> <span class="kp">nil</span><span class="p">,</span> <span class="s2">"a@b"</span><span class="p">,</span> <span class="s2">"john@.com"</span>
+    <span class="p">)}</span> 
+<span class="k">end</span>
+</pre></div><p><a href="https://github.com/bogdan/accept_values_for">https://github.com/bogdan/accept_values_for</a></p><p>There is a lot information on the web how to do that.</p><p>We won't describe it here just know that it is fast and easy</p>
+            </div>
+          </div>
+        
+          <div class=" ">
+            <div id="slide-28" class="content">
+              <h3>Shared examples group</h3><h5>Rspec counterpart to Ruby .include</h5>
+            </div>
+          </div>
+        
+          <div class=" ">
+            <div id="slide-29" class="content">
+              <h3>SEG example</h3><p>Use shared examples group to reuse tests</p><div class="highlight ruby code highlight"><pre><span class="k">class</span> <span class="nc">User</span>
+    <span class="kp">include</span> <span class="no">CommunityMember</span>
+<span class="k">end</span>
+
+<span class="n">describe</span> <span class="no">User</span>
+    <span class="n">it_should_behave_like</span> <span class="s2">"CommunityMember"</span>
+    <span class="c1">#Quotes can be remove in 2.0</span>
+<span class="k">end</span>
+
+<span class="n">shared_examples_group</span> <span class="s2">"CommunityMember"</span> <span class="k">do</span>
+    <span class="n">context</span> <span class="k">do</span>
+        <span class="n">it</span> <span class="p">{</span> <span class="n">should</span> <span class="o">.</span><span class="n">.</span><span class="o">.</span><span class="n">.</span><span class="o">.</span> <span class="p">}</span>
+    <span class="k">end</span>
+<span class="k">end</span> 
+</pre></div>
+            </div>
+          </div>
+        
+          <div class=" ">
+            <div id="slide-30" class="content">
+              <h1>Be abstract!</h1><ul>
+<li>Subject is the same</li>
+<li>#described_class is described class</li>
+<li>All context staff get shared.</li>
+<li>2.0 there is automatic subcontext for example group</li>
+</ul>
+            </div>
+          </div>
+        
+          <div class=" image">
+            <div id="slide-31" class="content">
+              <h4>Rspec book</h4><p><img src="rspecbook.png"></p><p>dfs</p>
+            </div>
+          </div>
+        
+          <div class=" ">
+            <div id="slide-32" class="content">
+              <h3>Read World</h3><p>The following aspects are not touched in the book:</p><ul>
+<li>Deadline</li>
+<li>Budget</li>
+<li>Client: "I want it right now"</li>
+</ul>
+<p>The schema <strong>not</strong> considered for <em>Agile development</em>.</p><p>And very good for elder projects.</p>
+            </div>
+          </div>
+        
+          <div class=" 
+">
+            <div id="slide-33" class="content">
+              <h3>My approach</h3><p>The development lifecycle consists of the following steps:</p><ul>
+<li>
+<em>Draft</em>    the code or api and implementation you plan to implement</li>
+<li>
+<em>Spec</em>     the code you wrote</li>
+<li>
+<em>Fix</em>      the issues in code and spec</li>
+<li>
+<em>Refactor</em> code and spec</li>
+</ul>
+<p>Acceptance tests are used only after UI got stable.</p><p><b>Always remember</b></p><p>We are agile.
+Your code might <strong>live</strong> not more than <strong>one day</strong>.</p>
+            </div>
+          </div>
+        
+          <div class=" ">
+            <div id="slide-34" class="content">
+              <h3>Summary: a <strong>lot</strong> of <em>text</em>
+</h3><p>In order to describe business logic in agile development process we use the best tool designed for that -  <em>Rspec</em>, that offers cool api:</p><ul>
+<li>Subject</li>
+<li>Matchers</li>
+<li>Context</li>
+<li>Let</li>
+<li>Shared examples group</li>
+</ul>
+<p>That let <em>implement</em> the following <em>ideas</em>:</p><ul>
+<li>Description-less examples</li>
+<li>Non-linear workflow spec</li>
+<li>Dynamic context</li>
+<li>Context callbacks</li>
+<li>Pattern matching</li>
+</ul>
+            </div>
+          </div>
+        
+          <div class=" ">
+            <div id="slide-35" class="content">
+              <h3>The end</h3><h5>Bogdan Gusiev</h5><h5>http://gusiev.com</h5><h5>http://github.com/bogdan</h5>
             </div>
           </div>
         

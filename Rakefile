@@ -30,6 +30,6 @@ task :default do
       `sensible-browser slides.html`
       @__browser = true
     end
-    sleep(0.3)
+    sleep(0.1)
   end
 end

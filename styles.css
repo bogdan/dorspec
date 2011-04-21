@@ -1,8 +1,54 @@
+h1, h2, h3, h4, h5, ol, ul, p, pre {
+  margin: 10px 0px 20px 0px; }
+
 h1, h2, h3, h4, h5 {
-  text-align: center;
-  margin: 10px 0; }
+  text-align: center; }
   h1 strong, h2 strong, h3 strong, h4 strong, h5 strong {
     font-weight: bolder; }
 
+h1 {
+  font-size: 1.8em; }
+
 h5 {
   font-weight: normal; }
+
+body {
+  font-size: 30px; }
+
+ol {
+  list-style-type: decimal;
+  padding-left: 60px; }
+
+ul {
+  padding-left: 45px; }
+
+ol, ul {
+  padding-bottom: 10px; }
+  ol li p, ul li p {
+    margin: 0; }
+  ol ol, ol ul, ul ol, ul ul {
+    margin: 0px; }
+
+pre {
+  padding-left: 20px; }
+
+strong {
+  color: red;
+  font-weight: normal; }
+
+em {
+  color: green;
+  font-style: normal; }
+
+.left {
+  float: left;
+  overflow: hidden; }
+  .left pre {
+    margin: 0; }
+
+.right {
+  float: right;
+  overflow: hidden; }
+
+.clear {
+  clear: both; }
