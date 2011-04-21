@@ -33,8 +33,9 @@ Unit test consists of:
 
 ### We should remember that
 
-* There are projects in Railsware outside of **RatePoint**
 * This presentation cover only *AGILE PROCESS*
+  * This presentation cover RatePoint less than other projects
+    * There are projects in Railsware outside of **RatePoint**
 * Ruby or Rails is based on Ruby which is *object oriented* programming language.
 
 !SLIDE code
