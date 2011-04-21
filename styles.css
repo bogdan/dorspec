@@ -13,7 +13,8 @@ h5 {
   font-weight: normal; }
 
 body {
-  font-size: 30px; }
+  font-size: 30px;
+  margin: auto; }
 
 ol {
   list-style-type: decimal;
@@ -52,3 +53,7 @@ em {
 
 .clear {
   clear: both; }
+
+#slides #track .content {
+  margin: auto;
+  width: 800px; }

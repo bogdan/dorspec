@@ -4860,7 +4860,13 @@ jQuery.extend( jQuery.easing,
     </script>
     
       <script type="text/javascript" charset="utf-8">
-        alert('hz');
+        (function($) {
+  var allSlides = function() {
+    return $('#slides #track > div');
+  }
+
+
+})(jQuery)
 
       </script>
     
@@ -4899,9 +4905,17 @@ Unit testing was used for ages.</p><p>Unit test consists of:</p><ul>
           <div class="">
             <div id="slide-3" class="content">
               <h3>We should remember that</h3><ul>
+<li>This presentation cover only <em>AGILE PROCESS</em>
+
+<ul>
+<li>This presentation cover RatePoint less than other projects
+
+<ul>
 <li>There are projects in Railsware outside of <strong>RatePoint</strong>
 </li>
-<li>This presentation cover only <em>AGILE PROCESS</em>
+</ul>
+</li>
+</ul>
 </li>
 <li>Ruby or Rails is based on Ruby which is <em>object oriented</em> programming language.</li>
 </ul>
@@ -5221,7 +5235,7 @@ Unit testing was used for ages.</p><p>Unit test consists of:</p><ul>
             <div id="slide-23" class="content">
               <h3>"Pattern matching" (c) S. Boiko</h3><p>Use to describe utitlity functions</p><div class="highlight ruby code highlight"><pre><span class="n">describe</span> <span class="no">BooleanExpression</span><span class="p">,</span> <span class="s2">".run"</span> <span class="k">do</span>
 
-    <span class="n">subject</span> <span class="p">{</span><span class="no">Expression</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">string</span><span class="p">)}</span>
+    <span class="n">subject</span> <span class="p">{</span><span class="no">BooleanExpression</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">string</span><span class="p">)}</span>
 
     <span class="n">context</span> <span class="s2">"with '&amp;' and both true"</span> <span class="k">do</span>
         <span class="n">let</span><span class="p">(</span><span class="ss">:string</span><span class="p">)</span> <span class="p">{</span> <span class="s2">"true &amp; true"</span> <span class="p">}</span>
@@ -5426,7 +5440,7 @@ Unit testing was used for ages.</p><p>Unit test consists of:</p><ul>
         
           <div class=" ">
             <div id="slide-30" class="content">
-              <h1>Be abstract!</h1><ul>
+              <h1>Be abstract!</h1><p>In order to make your tests reusable you need to:</p><ul>
 <li>Subject is the same</li>
 <li>#described_class is described class</li>
 <li>All context staff get shared.</li>
@@ -5435,29 +5449,65 @@ Unit testing was used for ages.</p><p>Unit test consists of:</p><ul>
             </div>
           </div>
         
-          <div class=" image">
+          <div class=" ">
             <div id="slide-31" class="content">
-              <h4>Rspec book</h4><p><img src="rspecbook.png"></p><p>dfs</p>
+              <h3>Shared examples group example</h3><div class="highlight ruby code highlight"><pre><span class="n">shared_examples_for</span> <span class="s2">"Traits::Dictionary::Core"</span> <span class="k">do</span>
+  <span class="n">describe</span> <span class="s2">"as Traits::Dictionary::Core"</span> <span class="k">do</span>
+    <span class="n">it</span> <span class="p">{</span><span class="n">should_not</span> <span class="n">accept_values_for</span><span class="p">(</span><span class="ss">:title</span><span class="p">,</span> <span class="kp">nil</span><span class="p">)}</span>
+
+    <span class="n">describe</span> <span class="s2">".options_for_select"</span> <span class="k">do</span>
+      <span class="n">let!</span><span class="p">(</span><span class="ss">:object</span><span class="p">)</span> <span class="k">do</span> 
+        <span class="no">Factory</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">described_class</span><span class="o">.</span><span class="n">to_s</span><span class="o">.</span><span class="n">underscore</span><span class="p">)</span>
+      <span class="k">end</span>
+      <span class="n">subject</span> <span class="p">{</span> <span class="n">described_class</span><span class="o">.</span><span class="n">options_for_select</span> <span class="p">}</span>
+      <span class="n">it</span> <span class="p">{</span> <span class="n">should</span> <span class="o">==</span> <span class="o">[[</span><span class="n">object</span><span class="o">.</span><span class="n">title</span><span class="p">,</span> <span class="n">object</span><span class="o">.</span><span class="n">id</span><span class="o">]]</span><span class="p">}</span>
+    <span class="k">end</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+</pre></div>
             </div>
           </div>
         
           <div class=" ">
             <div id="slide-32" class="content">
-              <h3>Read World</h3><p>The following aspects are not touched in the book:</p><ul>
-<li>Deadline</li>
-<li>Budget</li>
-<li>Client: "I want it right now"</li>
+              <h3>Power of SEG</h3><p>We can do all kinds of staff in SEG:</p><ul>
+<li>Delegate matchers and methods to subject</li>
+<li>Create an insance of decribed class with factory</li>
+<li>Call class methods</li>
 </ul>
-<p>The schema <strong>not</strong> considered for <em>Agile development</em>.</p><p>And very good for elder projects.</p>
             </div>
           </div>
         
           <div class=" 
 ">
             <div id="slide-33" class="content">
+              <h4>Summary</h4><h3>We need to structure things we learned</h3>
+            </div>
+          </div>
+        
+          <div class=" image">
+            <div id="slide-34" class="content">
+              <h4>Rspec book approach</h4><p><img src="rspecbook.png"></p>
+            </div>
+          </div>
+        
+          <div class=" ">
+            <div id="slide-35" class="content">
+              <h3>Read World</h3><p>The following aspects are not touched in the book:</p><ul>
+<li>Deadline</li>
+<li>Budget</li>
+<li>Client: "I want it right now"</li>
+</ul>
+<p>The schema <strong>not</strong> considered for <em>Agile development</em>.</p><p>And very <em>good</em> for <strong>elder</strong> projects.</p>
+            </div>
+          </div>
+        
+          <div class=" 
+">
+            <div id="slide-36" class="content">
               <h3>My approach</h3><p>The development lifecycle consists of the following steps:</p><ul>
 <li>
-<em>Draft</em>    the code or api and implementation you plan to implement</li>
+<em>Draft</em>    the code of the feature you plan to implement</li>
 <li>
 <em>Spec</em>     the code you wrote</li>
 <li>
@@ -5465,13 +5515,13 @@ Unit testing was used for ages.</p><p>Unit test consists of:</p><ul>
 <li>
 <em>Refactor</em> code and spec</li>
 </ul>
-<p>Acceptance tests are used only after UI got stable.</p><p><b>Always remember</b></p><p>We are agile.
-Your code might <strong>live</strong> not more than <strong>one day</strong>.</p>
+<p>Acceptance tests are used only after UI gets stable.</p><p><b>Always remember</b></p><p>We are agile.
+Your <em>code</em> might <em>live</em> not more than <strong>one day</strong>.</p>
             </div>
           </div>
         
           <div class=" ">
-            <div id="slide-34" class="content">
+            <div id="slide-37" class="content">
               <h3>Summary: a <strong>lot</strong> of <em>text</em>
 </h3><p>In order to describe business logic in agile development process we use the best tool designed for that -  <em>Rspec</em>, that offers cool api:</p><ul>
 <li>Subject</li>
@@ -5491,8 +5541,9 @@ Your code might <strong>live</strong> not more than <strong>one day</strong>.</p
           </div>
         
           <div class=" ">
-            <div id="slide-35" class="content">
-              <h3>The end</h3><h5>Bogdan Gusiev</h5><h5>http://gusiev.com</h5><h5>http://github.com/bogdan</h5>
+            <div id="slide-38" class="content">
+              <h3>The <strong>end</strong>
+</h3><h5>Bogdan Gusiev</h5><h5>http://gusiev.com</h5><h5>http://github.com/bogdan</h5>
             </div>
           </div>
         

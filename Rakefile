@@ -15,7 +15,7 @@ Sass::Plugin.options[:css_location] = File.dirname(__FILE__)
 task :default do
   mtime = Time.at(0)
   while true do
-    new_mtime = %w(styles.sass slides.md).map do |name|
+    new_mtime = %w(scripts.js styles.sass slides.md).map do |name|
       File.mtime(name)
     end.max
     if new_mtime > mtime

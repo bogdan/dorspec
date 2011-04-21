@@ -337,7 +337,7 @@ Use to describe utitlity functions
 @@@ ruby
     describe BooleanExpression, ".run" do
     
-        subject {Expression.run(string)}
+        subject {BooleanExpression.run(string)}
         
         context "with '&' and both true" do
             let(:string) { "true & true" }
@@ -569,19 +569,58 @@ Use shared examples group to reuse tests
 # Be abstract!
 
 
+In order to make your tests reusable you need to:
+
 * Subject is the same
 * \#described\_class is described class
 * All context staff get shared.
 * 2.0 there is automatic subcontext for example group
 
+!SLIDE 
+
+### Shared examples group example
+
+@@@ ruby
+        
+    shared_examples_for "Traits::Dictionary::Core" do
+      describe "as Traits::Dictionary::Core" do
+        it {should_not accept_values_for(:title, nil)}
+    
+        describe ".options_for_select" do
+          let!(:object) do 
+            Factory.create(described_class.to_s.underscore)
+          end
+          subject { described_class.options_for_select }
+          it { should == [[object.title, object.id]]}
+        end
+      end
+    end
+@@@
+
+!SLIDE 
+
+### Power of SEG
+
+We can do all kinds of staff in SEG:
+
+* Delegate matchers and methods to subject
+* Create an insance of decribed class with factory
+* Call class methods
+
+!SLIDE 
+
+
+#### Summary
+
+### We need to structure things we learned
+
 
 !SLIDE image
 
-#### Rspec book 
+#### Rspec book approach
 
 <img src="rspecbook.png"/>
 
-dfs
 
 !SLIDE 
 
@@ -596,7 +635,7 @@ The following aspects are not touched in the book:
 
 The schema **not** considered for *Agile development*.
 
-And very good for elder projects.
+And very *good* for **elder** projects.
 
 !SLIDE 
 
@@ -605,17 +644,17 @@ And very good for elder projects.
 
 The development lifecycle consists of the following steps:
 
-* *Draft*    the code or api and implementation you plan to implement
+* *Draft*    the code of the feature you plan to implement
 * *Spec*     the code you wrote
 * *Fix*      the issues in code and spec
 * *Refactor* code and spec
 
-Acceptance tests are used only after UI got stable. 
+Acceptance tests are used only after UI gets stable. 
 
 <b>Always remember</b>
 
 We are agile. 
-Your code might **live** not more than **one day**.
+Your *code* might *live* not more than **one day**.
 
 !SLIDE 
 
@@ -641,7 +680,7 @@ That let *implement* the following *ideas*:
 
 !SLIDE 
 
-### The end
+### The **end**
 
 ##### Bogdan Gusiev
 ##### http://gusiev.com
