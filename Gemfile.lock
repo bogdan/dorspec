@@ -1,4 +1,5 @@
 GEM
+  remote: http://rubygems.org/
   specs:
     bluecloth (2.1.0)
     haml (3.0.25)
