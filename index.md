@@ -677,6 +677,19 @@ That let *implement* the following *ideas*:
 * Context callbacks
 * Pattern matching
 
+!SLIDE
+
+### Examples
+
+https://gist.github.com/5fcd2185f7885b94e7f8 
+
+https://gist.github.com/240e84dcae43dabe931f 
+
+https://gist.github.com/c1151facc5b903542f5a
+
+https://gist.github.com/79bc5c8ab347f24d0b41
+
+https://gist.github.com/63f67a02b75d06f30056
 
 !SLIDE 
 

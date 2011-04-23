@@ -31,14 +31,14 @@ task :dev do
   mtime = Time.at(0)
   while true do
     new_mtime = %w(scripts.js styles.sass index.md).map do |name|
-      File.mtime(name)
+      File.mtime(directory + "/" + name)
     end.max
     if new_mtime > mtime
       build
       mtime = new_mtime
     end
     unless @__browser
-      `sensible-browser index.html`
+      puts "sensible-browser #{directory}/index.html" 
       @__browser = true
     end
     sleep(0.1)
