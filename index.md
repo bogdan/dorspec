@@ -379,7 +379,7 @@ Use to describe utitlity functions
 1           7
 </pre></div>
 
-<div class="left">
+<div class="right">
 @@@ ruby
     describe Product do
     
@@ -411,12 +411,54 @@ Use to describe utitlity functions
 
 !SLIDE 
 
-### Look and feel
+### Look and feel before and after
 
 
 <div style="font-size: 10px">
 
+
+
 <div class="left">
+
+
+@@@ ruby
+    context "match scheduler" do
+
+    before(:each) do
+      school = Factory.create(:school)
+      @team = Factory.create(:team, :school => school)
+      @student1 = Factory.create(:student, :team => @team, :school => school)
+      @student2 = Factory.create(:student, :team => @team, :school => school)
+      @competition = Factory.create(:competition, :team => @team)
+    end
+
+    describe "upcoming_matches" do
+      it "should return upcoming match for particular student" do
+        @student1.upcoming_matches.first.id.should == @student2.upcoming_matches.first.id
+      end
+    end
+
+    describe "next_opponent" do
+      it "should return correct opponent for student" do
+        @student2.next_opponent.should == @student1
+        @student1.next_opponent.should == @student2
+      end
+    end
+
+    describe "current_match" do
+      it "should return started match for student" do
+        @student1.current_match.should be_nil
+        @competition.start!
+        @competition.matches.first.id.should == @student1.current_match.id
+      end
+    end
+
+  end   
+@@@
+</div>
+<div class="right">
+
+
 @@@ ruby
     context "student" do
 
@@ -457,43 +499,6 @@ Use to describe utitlity functions
 
     end
   end 
-@@@
-</div>
-
-<div class="right">
-@@@ ruby
-    context "match scheduler" do
-
-    before(:each) do
-      school = Factory.create(:school)
-      @team = Factory.create(:team, :school => school)
-      @student1 = Factory.create(:student, :team => @team, :school => school)
-      @student2 = Factory.create(:student, :team => @team, :school => school)
-      @competition = Factory.create(:competition, :team => @team)
-    end
-
-    describe "upcoming_matches" do
-      it "should return upcoming match for particular student" do
-        @student1.upcoming_matches.first.id.should == @student2.upcoming_matches.first.id
-      end
-    end
-
-    describe "next_opponent" do
-      it "should return correct opponent for student" do
-        @student2.next_opponent.should == @student1
-        @student1.next_opponent.should == @student2
-      end
-    end
-
-    describe "current_match" do
-      it "should return started match for student" do
-        @student1.current_match.should be_nil
-        @competition.start!
-        @competition.matches.first.id.should == @student1.current_match.id
-      end
-    end
-
-  end   
 @@@
 </div>
 </div>
@@ -681,15 +686,11 @@ That let *implement* the following *ideas*:
 
 ### Examples
 
-https://gist.github.com/5fcd2185f7885b94e7f8 
-
-https://gist.github.com/240e84dcae43dabe931f 
-
-https://gist.github.com/c1151facc5b903542f5a
-
-https://gist.github.com/79bc5c8ab347f24d0b41
-
-https://gist.github.com/63f67a02b75d06f30056
+* [One](https://gist.github.com/5fcd2185f7885b94e7f8) 
+* [Two](https://gist.github.com/240e84dcae43dabe931f) 
+* [Three](https://gist.github.com/c1151facc5b903542f5a)
+* [Four](https://gist.github.com/79bc5c8ab347f24d0b41)
+* [Five](https://gist.github.com/63f67a02b75d06f30056)
 
 !SLIDE 
 

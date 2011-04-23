@@ -4865,6 +4865,14 @@ jQuery.extend( jQuery.easing,
     return $('#slides #track > div');
   }
 
+  $(document).ready(function() {
+    $("#slides").bind("click", function(event) {
+      event.stopPropagation();
+      event.stopImmediatePropagation();
+      return true;
+    });
+  });
+
 
 })(jQuery)
 
@@ -5275,7 +5283,7 @@ Unit testing was used for ages.</p><p>Unit test consists of:</p><ul>
 </pre>
 </div>
 
-<div class="left">
+<div class="right">
 <div class="highlight ruby code highlight"><pre>    <span class="n">describe</span> <span class="no">Product</span> <span class="k">do</span>
     
         <span class="n">subject</span> <span class="p">{</span> <span class="no">Factory</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="ss">:product</span><span class="p">)</span> <span class="p">}</span>
@@ -5307,9 +5315,50 @@ Unit testing was used for ages.</p><p>Unit test consists of:</p><ul>
         
           <div class=" ">
             <div id="slide-25" class="content">
-              <h3>Look and feel</h3><div style="font-size: 10px">
+              <h3>Look and feel before and after</h3><div style="font-size: 10px">
+
+
 
 <div class="left">
+
+
+<div class="highlight ruby code highlight"><pre>    <span class="n">context</span> <span class="s2">"match scheduler"</span> <span class="k">do</span>
+
+    <span class="n">before</span><span class="p">(</span><span class="ss">:each</span><span class="p">)</span> <span class="k">do</span>
+      <span class="n">school</span> <span class="o">=</span> <span class="no">Factory</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="ss">:school</span><span class="p">)</span>
+      <span class="vi">@team</span> <span class="o">=</span> <span class="no">Factory</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="ss">:team</span><span class="p">,</span> <span class="ss">:school</span> <span class="o">=&gt;</span> <span class="n">school</span><span class="p">)</span>
+      <span class="vi">@student1</span> <span class="o">=</span> <span class="no">Factory</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="ss">:student</span><span class="p">,</span> <span class="ss">:team</span> <span class="o">=&gt;</span> <span class="vi">@team</span><span class="p">,</span> <span class="ss">:school</span> <span class="o">=&gt;</span> <span class="n">school</span><span class="p">)</span>
+      <span class="vi">@student2</span> <span class="o">=</span> <span class="no">Factory</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="ss">:student</span><span class="p">,</span> <span class="ss">:team</span> <span class="o">=&gt;</span> <span class="vi">@team</span><span class="p">,</span> <span class="ss">:school</span> <span class="o">=&gt;</span> <span class="n">school</span><span class="p">)</span>
+      <span class="vi">@competition</span> <span class="o">=</span> <span class="no">Factory</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="ss">:competition</span><span class="p">,</span> <span class="ss">:team</span> <span class="o">=&gt;</span> <span class="vi">@team</span><span class="p">)</span>
+    <span class="k">end</span>
+
+    <span class="n">describe</span> <span class="s2">"upcoming_matches"</span> <span class="k">do</span>
+      <span class="n">it</span> <span class="s2">"should return upcoming match for particular student"</span> <span class="k">do</span>
+        <span class="vi">@student1</span><span class="o">.</span><span class="n">upcoming_matches</span><span class="o">.</span><span class="n">first</span><span class="o">.</span><span class="n">id</span><span class="o">.</span><span class="n">should</span> <span class="o">==</span> <span class="vi">@student2</span><span class="o">.</span><span class="n">upcoming_matches</span><span class="o">.</span><span class="n">first</span><span class="o">.</span><span class="n">id</span>
+      <span class="k">end</span>
+    <span class="k">end</span>
+
+    <span class="n">describe</span> <span class="s2">"next_opponent"</span> <span class="k">do</span>
+      <span class="n">it</span> <span class="s2">"should return correct opponent for student"</span> <span class="k">do</span>
+        <span class="vi">@student2</span><span class="o">.</span><span class="n">next_opponent</span><span class="o">.</span><span class="n">should</span> <span class="o">==</span> <span class="vi">@student1</span>
+        <span class="vi">@student1</span><span class="o">.</span><span class="n">next_opponent</span><span class="o">.</span><span class="n">should</span> <span class="o">==</span> <span class="vi">@student2</span>
+      <span class="k">end</span>
+    <span class="k">end</span>
+
+    <span class="n">describe</span> <span class="s2">"current_match"</span> <span class="k">do</span>
+      <span class="n">it</span> <span class="s2">"should return started match for student"</span> <span class="k">do</span>
+        <span class="vi">@student1</span><span class="o">.</span><span class="n">current_match</span><span class="o">.</span><span class="n">should</span> <span class="n">be_nil</span>
+        <span class="vi">@competition</span><span class="o">.</span><span class="n">start!</span>
+        <span class="vi">@competition</span><span class="o">.</span><span class="n">matches</span><span class="o">.</span><span class="n">first</span><span class="o">.</span><span class="n">id</span><span class="o">.</span><span class="n">should</span> <span class="o">==</span> <span class="vi">@student1</span><span class="o">.</span><span class="n">current_match</span><span class="o">.</span><span class="n">id</span>
+      <span class="k">end</span>
+    <span class="k">end</span>
+
+  <span class="k">end</span>   
+</pre></div>
+</div>
+<div class="right">
+
+
 <div class="highlight ruby code highlight"><pre>    <span class="n">context</span> <span class="s2">"student"</span> <span class="k">do</span>
 
     <span class="n">let</span><span class="p">(</span><span class="ss">:school</span><span class="p">)</span> <span class="p">{</span> <span class="no">Factory</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="ss">:school</span><span class="p">)</span> <span class="p">}</span>
@@ -5349,42 +5398,6 @@ Unit testing was used for ages.</p><p>Unit test consists of:</p><ul>
 
     <span class="k">end</span>
   <span class="k">end</span> 
-</pre></div>
-</div>
-
-<div class="right">
-<div class="highlight ruby code highlight"><pre>    <span class="n">context</span> <span class="s2">"match scheduler"</span> <span class="k">do</span>
-
-    <span class="n">before</span><span class="p">(</span><span class="ss">:each</span><span class="p">)</span> <span class="k">do</span>
-      <span class="n">school</span> <span class="o">=</span> <span class="no">Factory</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="ss">:school</span><span class="p">)</span>
-      <span class="vi">@team</span> <span class="o">=</span> <span class="no">Factory</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="ss">:team</span><span class="p">,</span> <span class="ss">:school</span> <span class="o">=&gt;</span> <span class="n">school</span><span class="p">)</span>
-      <span class="vi">@student1</span> <span class="o">=</span> <span class="no">Factory</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="ss">:student</span><span class="p">,</span> <span class="ss">:team</span> <span class="o">=&gt;</span> <span class="vi">@team</span><span class="p">,</span> <span class="ss">:school</span> <span class="o">=&gt;</span> <span class="n">school</span><span class="p">)</span>
-      <span class="vi">@student2</span> <span class="o">=</span> <span class="no">Factory</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="ss">:student</span><span class="p">,</span> <span class="ss">:team</span> <span class="o">=&gt;</span> <span class="vi">@team</span><span class="p">,</span> <span class="ss">:school</span> <span class="o">=&gt;</span> <span class="n">school</span><span class="p">)</span>
-      <span class="vi">@competition</span> <span class="o">=</span> <span class="no">Factory</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="ss">:competition</span><span class="p">,</span> <span class="ss">:team</span> <span class="o">=&gt;</span> <span class="vi">@team</span><span class="p">)</span>
-    <span class="k">end</span>
-
-    <span class="n">describe</span> <span class="s2">"upcoming_matches"</span> <span class="k">do</span>
-      <span class="n">it</span> <span class="s2">"should return upcoming match for particular student"</span> <span class="k">do</span>
-        <span class="vi">@student1</span><span class="o">.</span><span class="n">upcoming_matches</span><span class="o">.</span><span class="n">first</span><span class="o">.</span><span class="n">id</span><span class="o">.</span><span class="n">should</span> <span class="o">==</span> <span class="vi">@student2</span><span class="o">.</span><span class="n">upcoming_matches</span><span class="o">.</span><span class="n">first</span><span class="o">.</span><span class="n">id</span>
-      <span class="k">end</span>
-    <span class="k">end</span>
-
-    <span class="n">describe</span> <span class="s2">"next_opponent"</span> <span class="k">do</span>
-      <span class="n">it</span> <span class="s2">"should return correct opponent for student"</span> <span class="k">do</span>
-        <span class="vi">@student2</span><span class="o">.</span><span class="n">next_opponent</span><span class="o">.</span><span class="n">should</span> <span class="o">==</span> <span class="vi">@student1</span>
-        <span class="vi">@student1</span><span class="o">.</span><span class="n">next_opponent</span><span class="o">.</span><span class="n">should</span> <span class="o">==</span> <span class="vi">@student2</span>
-      <span class="k">end</span>
-    <span class="k">end</span>
-
-    <span class="n">describe</span> <span class="s2">"current_match"</span> <span class="k">do</span>
-      <span class="n">it</span> <span class="s2">"should return started match for student"</span> <span class="k">do</span>
-        <span class="vi">@student1</span><span class="o">.</span><span class="n">current_match</span><span class="o">.</span><span class="n">should</span> <span class="n">be_nil</span>
-        <span class="vi">@competition</span><span class="o">.</span><span class="n">start!</span>
-        <span class="vi">@competition</span><span class="o">.</span><span class="n">matches</span><span class="o">.</span><span class="n">first</span><span class="o">.</span><span class="n">id</span><span class="o">.</span><span class="n">should</span> <span class="o">==</span> <span class="vi">@student1</span><span class="o">.</span><span class="n">current_match</span><span class="o">.</span><span class="n">id</span>
-      <span class="k">end</span>
-    <span class="k">end</span>
-
-  <span class="k">end</span>   
 </pre></div>
 </div>
 </div><div class="clear"></div>
@@ -5542,7 +5555,13 @@ Your <em>code</em> might <em>live</em> not more than <strong>one day</strong>.</
         
           <div class="">
             <div id="slide-38" class="content">
-              <h3>Examples</h3><p>https://gist.github.com/5fcd2185f7885b94e7f8</p><p>https://gist.github.com/240e84dcae43dabe931f</p><p>https://gist.github.com/c1151facc5b903542f5a</p><p>https://gist.github.com/79bc5c8ab347f24d0b41</p><p>https://gist.github.com/63f67a02b75d06f30056</p>
+              <h3>Examples</h3><ul>
+<li><a href="https://gist.github.com/5fcd2185f7885b94e7f8">One</a></li>
+<li><a href="https://gist.github.com/240e84dcae43dabe931f">Two</a></li>
+<li><a href="https://gist.github.com/c1151facc5b903542f5a">Three</a></li>
+<li><a href="https://gist.github.com/79bc5c8ab347f24d0b41">Four</a></li>
+<li><a href="https://gist.github.com/63f67a02b75d06f30056">Five</a></li>
+</ul>
             </div>
           </div>
         
