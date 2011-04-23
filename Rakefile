@@ -9,27 +9,38 @@ require "sass/plugin"
 
 
 
-Sass::Plugin.options[:template_location] = File.dirname(__FILE__)
-Sass::Plugin.options[:css_location] = File.dirname(__FILE__)
+directory = File.dirname(__FILE__)
+Sass::Plugin.options[:template_location] = directory
+Sass::Plugin.options[:css_location] = directory
 
-task :default do
+
+def build
+  Sass::Plugin.check_for_updates
+  slideshow = SlideDown.new(File.read('index.md')).render("default")
+  file = File.open("index.html", "w")
+  file.write(slideshow)
+  file.flush
+end
+task :dev do
   mtime = Time.at(0)
   while true do
-    new_mtime = %w(scripts.js styles.sass slides.md).map do |name|
+    new_mtime = %w(scripts.js styles.sass index.md).map do |name|
       File.mtime(name)
     end.max
     if new_mtime > mtime
-      Sass::Plugin.check_for_updates
-      slideshow = SlideDown.new(File.read('slides.md')).render("default")
-      file = File.open("slides.html", "w")
-      file.write(slideshow)
-      file.flush
+      build
       mtime = new_mtime
     end
     unless @__browser
-      `sensible-browser slides.html`
+      `sensible-browser index.html`
       @__browser = true
     end
     sleep(0.1)
   end
+end
+
+task :default do
+  build
+  `sed s_#{directory}/__g index.html > index1.html`
+  `mv index1.html index.html`
 end
