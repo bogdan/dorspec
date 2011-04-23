@@ -13,14 +13,20 @@ directory = File.dirname(__FILE__)
 Sass::Plugin.options[:template_location] = directory
 Sass::Plugin.options[:css_location] = directory
 
+class SlideDown
+  def javascripts
+    [File.read("scripts.js")]
+  end
+end
 
 def build
   Sass::Plugin.check_for_updates
-  slideshow = SlideDown.new(File.read('index.md')).render("default")
+  slideshow = SlideDown.new(File.read('index.md'), :stylesheets => "styles.css").render("default")
   file = File.open("index.html", "w")
   file.write(slideshow)
   file.flush
 end
+
 task :dev do
   mtime = Time.at(0)
   while true do
@@ -41,6 +47,4 @@ end
 
 task :default do
   build
-  `sed s_#{directory}/__g index.html > index1.html`
-  `mv index1.html index.html`
 end
