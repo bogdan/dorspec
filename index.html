@@ -4888,13 +4888,21 @@ jQuery.extend( jQuery.easing,
         
           <div class="">
             <div id="slide-0" class="content">
-              <h1>Do Rspec</h1><h2>BDD with advanced Rspec</h2><h3>Bogdan Gusiev</h3><h3>2011.04</h3>
+              
+            </div>
+          </div>
+        
+          <div class="
+">
+            <div id="slide-1" class="content">
+              <h1>Do Rspec</h1><h2>Forgotten features of Rspec <strike>1.0</strike>
+</h2><h3><a href="http://bogdan.github.com/dorspec">http://bogdan.github.com/dorspec</a></h3><h3>Bogdan Gusiev</h3><h3>2011.04</h3>
             </div>
           </div>
         
           <div class="">
-            <div id="slide-1" class="content">
-              <h3>Where we came from?</h3><p><em>TestUnit</em> a very <em>straight</em> unit test framework.
+            <div id="slide-2" class="content">
+              <h3>Where we came from?</h3><p><em>TestUnit</em> - very <em>straight</em> unit test framework.
 Unit testing was used for ages.</p><p>Unit test consists of:</p><ul>
 <li>Workflow</li>
 <li>Assertions</li>
@@ -4903,7 +4911,7 @@ Unit testing was used for ages.</p><p>Unit test consists of:</p><ul>
           </div>
         
           <div class=" ">
-            <div id="slide-2" class="content">
+            <div id="slide-3" class="content">
               <h3>Where should we go?</h3><h5>Describe and test <em>business logic</em>
 </h5><h5>in <em>agile development proccess</em>
 </h5>
@@ -4911,18 +4919,12 @@ Unit testing was used for ages.</p><p>Unit test consists of:</p><ul>
           </div>
         
           <div class="">
-            <div id="slide-3" class="content">
+            <div id="slide-4" class="content">
               <h3>We should remember that</h3><ul>
 <li>This presentation cover only <em>AGILE PROCESS</em>
 
 <ul>
-<li>This presentation cover RatePoint less than other projects
-
-<ul>
-<li>There are projects in Railsware outside of <strong>RatePoint</strong>
-</li>
-</ul>
-</li>
+<li>Some of the thoughts here not applicable to elder projects</li>
 </ul>
 </li>
 <li>Ruby or Rails is based on Ruby which is <em>object oriented</em> programming language.</li>
@@ -4931,7 +4933,7 @@ Unit testing was used for ages.</p><p>Unit test consists of:</p><ul>
           </div>
         
           <div class=" code">
-            <div id="slide-4" class="content">
+            <div id="slide-5" class="content">
               <h3>Describing the behavior in Rspec</h3><p>Every <strong>unit test</strong> is a workflow</p><ol>
 <li>Step 1: Construct user with valid attributes</li>
 <li>Step 2: Call save method</li>
@@ -4964,17 +4966,15 @@ Unit testing was used for ages.</p><p>Unit test consists of:</p><ul>
           </div>
         
           <div class=" ">
-            <div id="slide-5" class="content">
-              <h1>
-<em>Subject</em> is a <em>code block</em>
-</h1><h3>Desinged to be a convention.</h3><h3>Rather than create instance <strong>variables</strong> with <strong>different names</strong>
+            <div id="slide-6" class="content">
+              <h1>Subject is a code block</h1><h3>Desinged to be a <em>convention</em>.</h3><h3>Rather than create instance variables with <strong>different names</strong>
 </h3>
             </div>
           </div>
         
           <div class="
 ">
-            <div id="slide-6" class="content">
+            <div id="slide-7" class="content">
               <h3>Describe subject in rspec</h3><p>Example:
 </p>
 <div class="highlight ruby code highlight"><pre><span class="n">describe</span> <span class="no">User</span> <span class="k">do</span>
@@ -4991,7 +4991,7 @@ Unit testing was used for ages.</p><p>Unit test consists of:</p><ul>
           </div>
         
           <div class="">
-            <div id="slide-7" class="content">
+            <div id="slide-8" class="content">
               <h3>Describing behavior</h3><p>Benefits of subject:</p><ul>
 <li>Delegate expectation to subject
 
@@ -5014,7 +5014,7 @@ Unit testing was used for ages.</p><p>Unit test consists of:</p><ul>
           </div>
         
           <div class="">
-            <div id="slide-8" class="content">
+            <div id="slide-9" class="content">
               <h3>Expectation usage example</h3><div class="highlight ruby code highlight"><pre><span class="n">describe</span> <span class="no">User</span> <span class="k">do</span>
     <span class="n">subject</span> <span class="p">{</span> <span class="n">build_user_with_factory</span> <span class="p">}</span>
 
@@ -5032,14 +5032,14 @@ Unit testing was used for ages.</p><p>Unit test consists of:</p><ul>
           </div>
         
           <div class="">
-            <div id="slide-9" class="content">
-              <h3>New property emerged</h3><h2>Description-less example</h2><h5>Examples description is a <strong>maintenance</strong> point we are trying to <em>reduce</em>
+            <div id="slide-10" class="content">
+              <h3>New property emerged</h3><h2>Description-less example</h2><h5>Examples <em>description</em> is a <strong>maintenance</strong> point we are trying to <em>reduce</em>
 </h5>
             </div>
           </div>
         
           <div class="">
-            <div id="slide-10" class="content">
+            <div id="slide-11" class="content">
               <h3>Matchers</h3><p>Internal matchers:</p><ul>
 <li>be_*
 
@@ -5054,19 +5054,19 @@ Unit testing was used for ages.</p><p>Unit test consists of:</p><ul>
 <li>Shoulda</li>
 <li>Remarkable</li>
 </ul>
-<p>Beware: <strong>copypaste</strong> is not <em>BDD</em>!</p>
-            </div>
-          </div>
-        
-          <div class="">
-            <div id="slide-11" class="content">
-              <h3>Describe the context</h3><p><b>This is where the problem is!</b></p><p>Rspec is designed to describe context-oriented logic</p><p><em>Business logic</em> is always context oriented</p><p>Describe <em>non context-oriented logic</em> in rspec has <strong>no benefits</strong></p>
+<p>Beware: <strong>copypaste</strong> is not <em>BDD</em> (and is not programming)!</p>
             </div>
           </div>
         
           <div class="">
             <div id="slide-12" class="content">
-              <h3>What is context dependent logic?</h3><p>Context-oriented logic - from less context dependent to very context dependent:</p><ul>
+              <h3>Describe the context</h3><p><b>This is where the problem is!</b></p><p>Rspec is designed to describe context-oriented logic</p><p><em>Business logic</em> is always context oriented</p><p>Describe <em>non context</em>-oriented logic in rspec has <strong>no benefits</strong></p>
+            </div>
+          </div>
+        
+          <div class="">
+            <div id="slide-13" class="content">
+              <h3>What is context dependent logic?</h3><p>Context-oriented software - from less context dependent to very context dependent:</p><ul>
 <li>
 <em>Utility</em> functions
 
@@ -5100,7 +5100,7 @@ Unit testing was used for ages.</p><p>Unit test consists of:</p><ul>
           </div>
         
           <div class=" ">
-            <div id="slide-13" class="content">
+            <div id="slide-14" class="content">
               <h3>Rspec techniques to describe context</h3><ul>
 <li>Tools
 
@@ -5122,14 +5122,14 @@ Unit testing was used for ages.</p><p>Unit test consists of:</p><ul>
           </div>
         
           <div class=" ">
-            <div id="slide-14" class="content">
+            <div id="slide-15" class="content">
               <h2>
 <em>#let</em> function for dynamic context</h2><h3>designed for <em>lazy loading</em> objects to the context as they needed</h3>
             </div>
           </div>
         
           <div class=" ">
-            <div id="slide-15" class="content">
+            <div id="slide-16" class="content">
               <h3>Some source code</h3><div style="font-size: 20px">
 <div class="highlight ruby code highlight"><pre>    <span class="k">def</span> <span class="nf">let</span><span class="p">(</span><span class="nb">name</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">block</span><span class="p">)</span> 
         <span class="n">define_method</span> <span class="nb">name</span> <span class="k">do</span> 
@@ -5159,7 +5159,7 @@ Unit testing was used for ages.</p><p>Unit test consists of:</p><ul>
           </div>
         
           <div class=" ">
-            <div id="slide-16" class="content">
+            <div id="slide-17" class="content">
               <h3>#let basic usage example</h3><div class="highlight ruby code highlight"><pre><span class="n">describe</span> <span class="no">User</span> <span class="k">do</span>
     <span class="n">describe</span> <span class="s2">".activated named scope"</span> <span class="k">do</span>
 
@@ -5177,7 +5177,7 @@ Unit testing was used for ages.</p><p>Unit test consists of:</p><ul>
           </div>
         
           <div class=" ">
-            <div id="slide-17" class="content">
+            <div id="slide-18" class="content">
               <h3>#let calls are chainable</h3><div class="highlight ruby code highlight"><pre><span class="n">let</span><span class="p">(</span><span class="ss">:user</span><span class="p">)</span> <span class="p">{</span> <span class="o">.</span><span class="n">.</span><span class="o">.</span> <span class="p">}</span>
 <span class="n">let</span><span class="p">(</span><span class="ss">:community</span><span class="p">)</span> <span class="p">{</span> <span class="o">.</span><span class="n">.</span><span class="o">.</span> <span class="p">}</span>
 
@@ -5191,21 +5191,21 @@ Unit testing was used for ages.</p><p>Unit test consists of:</p><ul>
           </div>
         
           <div class=" ">
-            <div id="slide-18" class="content">
+            <div id="slide-19" class="content">
               <h3>Bang version of #let</h3><p>Will create user and at once load it to the context</p><div class="highlight ruby code highlight"><pre><span class="n">let!</span><span class="p">(</span><span class="ss">:user</span><span class="p">)</span> <span class="p">{</span> <span class="o">.</span><span class="n">.</span><span class="o">.</span> <span class="p">}</span>
 </pre></div>
             </div>
           </div>
         
           <div class=" ">
-            <div id="slide-19" class="content">
+            <div id="slide-20" class="content">
               <h3>Nested #context</h3><h5>Designed to test <em>non-linear workflow</em>
 </h5>
             </div>
           </div>
         
           <div class=" ">
-            <div id="slide-20" class="content">
+            <div id="slide-21" class="content">
               <h3>Nested context to test workflow</h3><div class="highlight ruby code highlight"><pre><span class="n">describe</span> <span class="no">Ticket</span> <span class="k">do</span>
 
   <span class="n">context</span> <span class="s2">"after save!"</span> <span class="k">do</span>
@@ -5227,20 +5227,20 @@ Unit testing was used for ages.</p><p>Unit test consists of:</p><ul>
           </div>
         
           <div class=" ">
-            <div id="slide-21" class="content">
+            <div id="slide-22" class="content">
               <h3>New property</h3><h1>Spec Outline</h1>
             </div>
           </div>
         
           <div class=" ">
-            <div id="slide-22" class="content">
+            <div id="slide-23" class="content">
               <h3>#context + #let =</h3><h3>Pattern Matches + Context Callbacks</h3>
             </div>
           </div>
         
           <div class=" 
 ">
-            <div id="slide-23" class="content">
+            <div id="slide-24" class="content">
               <h3>"Pattern matching" (c) S. Boiko</h3><p>Use to describe utitlity functions</p><div class="highlight ruby code highlight"><pre><span class="n">describe</span> <span class="no">BooleanExpression</span><span class="p">,</span> <span class="s2">".run"</span> <span class="k">do</span>
 
     <span class="n">subject</span> <span class="p">{</span><span class="no">BooleanExpression</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">string</span><span class="p">)}</span>
@@ -5261,29 +5261,27 @@ Unit testing was used for ages.</p><p>Unit test consists of:</p><ul>
           </div>
         
           <div class=" ">
-            <div id="slide-24" class="content">
+            <div id="slide-25" class="content">
               <h3>Most complicated example in this presentation</h3><div style="overflow: hidden; font-size: 16px">
-<div style=" padding-top: 0px" class="left" st>
-<pre style="font-family: monospace;">
+<div style="" class="left" st>
+<div class="highlight ruby code highlight"><pre>    
 
-
-    3
-
+          <span class="mi">4</span>
 
 
 
-  2   
-      4   6
+      <span class="mi">2</span>  
+        <span class="mi">3</span>   <span class="mi">5</span>   <span class="mi">7</span>
 
 
 
 
-        5
-1           7
-</pre>
+              <span class="mi">6</span>
+    <span class="mi">1</span>             <span class="mi">8</span>
+</pre></div>
 </div>
 
-<div class="right">
+<div class="left">
 <div class="highlight ruby code highlight"><pre>    <span class="n">describe</span> <span class="no">Product</span> <span class="k">do</span>
     
         <span class="n">subject</span> <span class="p">{</span> <span class="no">Factory</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="ss">:product</span><span class="p">)</span> <span class="p">}</span>
@@ -5308,15 +5306,28 @@ Unit testing was used for ages.</p><p>Unit test consists of:</p><ul>
     <span class="k">end</span>
 </pre></div>
 </div>
+<div class="left">
+
+<ol style="font-size: 20px">
+<li>Meet first example</li>
+<li>Seek for before block and call it</li>
+<li>Find subject call</li>
+<li>Call subject block</li>
+<li>Come back to before and discover _confirmed call</li>
+<li>Call _confirmed block</li>
+<li>Come back to before block and finish execution</li>
+<li>Run the matcher</li>
+
+</ol>
+</div>
 <div class="clear"></div>
 </div>
             </div>
           </div>
         
           <div class=" ">
-            <div id="slide-25" class="content">
-              <h3>Look and feel before and after</h3><div style="font-size: 10px">
-
+            <div id="slide-26" class="content">
+              <h3>Look and feel before and after</h3><div style="font-size: 8px">
 
 
 <div class="left">
@@ -5334,7 +5345,8 @@ Unit testing was used for ages.</p><p>Unit test consists of:</p><ul>
 
     <span class="n">describe</span> <span class="s2">"upcoming_matches"</span> <span class="k">do</span>
       <span class="n">it</span> <span class="s2">"should return upcoming match for particular student"</span> <span class="k">do</span>
-        <span class="vi">@student1</span><span class="o">.</span><span class="n">upcoming_matches</span><span class="o">.</span><span class="n">first</span><span class="o">.</span><span class="n">id</span><span class="o">.</span><span class="n">should</span> <span class="o">==</span> <span class="vi">@student2</span><span class="o">.</span><span class="n">upcoming_matches</span><span class="o">.</span><span class="n">first</span><span class="o">.</span><span class="n">id</span>
+        <span class="vi">@student1</span><span class="o">.</span><span class="n">upcoming_matches</span><span class="o">.</span><span class="n">first</span><span class="o">.</span><span class="n">id</span><span class="o">.</span><span class="n">should</span> <span class="o">==</span> 
+          <span class="vi">@student2</span><span class="o">.</span><span class="n">upcoming_matches</span><span class="o">.</span><span class="n">first</span><span class="o">.</span><span class="n">id</span>
       <span class="k">end</span>
     <span class="k">end</span>
 
@@ -5406,13 +5418,13 @@ Unit testing was used for ages.</p><p>Unit test consists of:</p><ul>
         
           <div class=" 
 ">
-            <div id="slide-26" class="content">
-              <h5>Come back to:</h5><h3>Custom matchers</h3><h5>A class with very clean api recognized by Rspec</h5>
+            <div id="slide-27" class="content">
+              <h5>Come back to:</h5><h2>Custom matchers</h2><h3>A class with very clean api recognized by Rspec</h3>
             </div>
           </div>
         
           <div class=" ">
-            <div id="slide-27" class="content">
+            <div id="slide-28" class="content">
               <h3>Custom matcher that test validation</h3><div class="highlight ruby code highlight"><pre><span class="n">describe</span> <span class="no">User</span> <span class="k">do</span> 
     <span class="n">it</span> <span class="p">{</span> <span class="n">should</span> <span class="n">accept_values_for</span><span class="p">(</span>
         <span class="ss">:email</span><span class="p">,</span> <span class="s2">"john@example.com"</span><span class="p">,</span> <span class="s2">"lambda@gusiev.com"</span>
@@ -5421,18 +5433,18 @@ Unit testing was used for ages.</p><p>Unit test consists of:</p><ul>
         <span class="ss">:email</span><span class="p">,</span> <span class="s2">"invalid"</span><span class="p">,</span> <span class="kp">nil</span><span class="p">,</span> <span class="s2">"a@b"</span><span class="p">,</span> <span class="s2">"john@.com"</span>
     <span class="p">)}</span> 
 <span class="k">end</span>
-</pre></div><p><a href="https://github.com/bogdan/accept_values_for">https://github.com/bogdan/accept_values_for</a></p><p>There is a lot information on the web how to do that.</p><p>We won't describe it here just know that it is fast and easy</p>
-            </div>
-          </div>
-        
-          <div class=" ">
-            <div id="slide-28" class="content">
-              <h3>Shared examples group</h3><h5>Rspec counterpart to Ruby .include</h5>
+</pre></div><p><a href="https://github.com/bogdan/accept_values_for">https://github.com/bogdan/accept_values_for</a></p><p>There is a lot information on the web how to do that.</p>
             </div>
           </div>
         
           <div class=" ">
             <div id="slide-29" class="content">
+              <h2>Shared examples group</h2><h3>Rspec counterpart to Ruby .include</h3>
+            </div>
+          </div>
+        
+          <div class=" ">
+            <div id="slide-30" class="content">
               <h3>SEG example</h3><p>Use shared examples group to reuse tests</p><div class="highlight ruby code highlight"><pre><span class="k">class</span> <span class="nc">User</span>
     <span class="kp">include</span> <span class="no">CommunityMember</span>
 <span class="k">end</span>
@@ -5452,7 +5464,7 @@ Unit testing was used for ages.</p><p>Unit test consists of:</p><ul>
           </div>
         
           <div class=" ">
-            <div id="slide-30" class="content">
+            <div id="slide-31" class="content">
               <h1>Be abstract!</h1><p>In order to make your tests reusable you need to:</p><ul>
 <li>Subject is the same</li>
 <li>#described_class is described class</li>
@@ -5463,7 +5475,7 @@ Unit testing was used for ages.</p><p>Unit test consists of:</p><ul>
           </div>
         
           <div class=" ">
-            <div id="slide-31" class="content">
+            <div id="slide-32" class="content">
               <h3>Shared examples group example</h3><div class="highlight ruby code highlight"><pre><span class="n">shared_examples_for</span> <span class="s2">"Traits::Dictionary::Core"</span> <span class="k">do</span>
   <span class="n">describe</span> <span class="s2">"as Traits::Dictionary::Core"</span> <span class="k">do</span>
     <span class="n">it</span> <span class="p">{</span><span class="n">should_not</span> <span class="n">accept_values_for</span><span class="p">(</span><span class="ss">:title</span><span class="p">,</span> <span class="kp">nil</span><span class="p">)}</span>
@@ -5482,7 +5494,7 @@ Unit testing was used for ages.</p><p>Unit test consists of:</p><ul>
           </div>
         
           <div class=" ">
-            <div id="slide-32" class="content">
+            <div id="slide-33" class="content">
               <h3>Power of SEG</h3><p>We can do all kinds of staff in SEG:</p><ul>
 <li>Delegate matchers and methods to subject</li>
 <li>Create an insance of decribed class with factory</li>
@@ -5493,19 +5505,19 @@ Unit testing was used for ages.</p><p>Unit test consists of:</p><ul>
         
           <div class=" 
 ">
-            <div id="slide-33" class="content">
-              <h4>Summary</h4><h3>We need to structure things we learned</h3>
+            <div id="slide-34" class="content">
+              <h2>Summary</h2>
             </div>
           </div>
         
           <div class=" image">
-            <div id="slide-34" class="content">
+            <div id="slide-35" class="content">
               <h4>Rspec book approach</h4><p><img src="rspecbook.png"></p>
             </div>
           </div>
         
           <div class=" ">
-            <div id="slide-35" class="content">
+            <div id="slide-36" class="content">
               <h3>Read World</h3><p>The following aspects are not touched in the book:</p><ul>
 <li>Deadline</li>
 <li>Budget</li>
@@ -5517,7 +5529,7 @@ Unit testing was used for ages.</p><p>Unit test consists of:</p><ul>
         
           <div class=" 
 ">
-            <div id="slide-36" class="content">
+            <div id="slide-37" class="content">
               <h3>My approach</h3><p>The development lifecycle consists of the following steps:</p><ul>
 <li>
 <em>Draft</em>    the code of the feature you plan to implement</li>
@@ -5534,7 +5546,7 @@ Your <em>code</em> might <em>live</em> not more than <strong>one day</strong>.</
           </div>
         
           <div class=" ">
-            <div id="slide-37" class="content">
+            <div id="slide-38" class="content">
               <h3>Summary: a <strong>lot</strong> of <em>text</em>
 </h3><p>In order to describe business logic in agile development process we use the best tool designed for that -  <em>Rspec</em>, that offers cool api:</p><ul>
 <li>Subject</li>
@@ -5554,7 +5566,7 @@ Your <em>code</em> might <em>live</em> not more than <strong>one day</strong>.</
           </div>
         
           <div class="">
-            <div id="slide-38" class="content">
+            <div id="slide-39" class="content">
               <h3>Examples</h3><ul>
 <li><a href="https://gist.github.com/5fcd2185f7885b94e7f8">One</a></li>
 <li><a href="https://gist.github.com/240e84dcae43dabe931f">Two</a></li>
@@ -5566,9 +5578,9 @@ Your <em>code</em> might <em>live</em> not more than <strong>one day</strong>.</
           </div>
         
           <div class=" ">
-            <div id="slide-39" class="content">
-              <h3>The <strong>end</strong>
-</h3><h5>Bogdan Gusiev</h5><h5>http://gusiev.com</h5><h5>http://github.com/bogdan</h5>
+            <div id="slide-40" class="content">
+              <h2>The <strong>end</strong>
+</h2><h3>Bogdan Gusiev</h3><h4><a href="http://gusiev.com">http://gusiev.com</a></h4><h4><a href="http://github.com/bogdan">http://github.com/bogdan</a></h4>
             </div>
           </div>
         

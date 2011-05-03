@@ -1,9 +1,12 @@
+
 !SLIDE
+
 
 # Do Rspec
 
-## BDD with advanced Rspec
+## Forgotten features of Rspec <strike>1.0</strike>
 
+### [http://bogdan.github.com/dorspec](http://bogdan.github.com/dorspec)
 
 
 ### Bogdan Gusiev
@@ -13,7 +16,7 @@
 
 ### Where we came from?
 
-*TestUnit* a very *straight* unit test framework.
+*TestUnit* - very *straight* unit test framework.
 Unit testing was used for ages.
 
 Unit test consists of:
@@ -34,8 +37,7 @@ Unit test consists of:
 ### We should remember that
 
 * This presentation cover only *AGILE PROCESS*
-  * This presentation cover RatePoint less than other projects
-    * There are projects in Railsware outside of **RatePoint**
+  * Some of the thoughts here not applicable to elder projects
 * Ruby or Rails is based on Ruby which is *object oriented* programming language.
 
 !SLIDE code
@@ -61,11 +63,11 @@ Every *spec* is a requirement that consists of:
 
 !SLIDE 
 
-# *Subject* is a *code block*
+# Subject is a code block
 
-### Desinged to be a convention. 
+### Desinged to be a *convention*. 
 
-### Rather than create instance **variables** with **different names** 
+### Rather than create instance variables with **different names** 
 !SLIDE
 
 
@@ -134,7 +136,7 @@ Matchers:
 
 ## Description-less example
 
-##### Examples description is a **maintenance** point we are trying to *reduce*
+##### Examples *description* is a **maintenance** point we are trying to *reduce*
 
 
 !SLIDE
@@ -154,7 +156,7 @@ External libraries:
 * Shoulda
 * Remarkable
 
-Beware: **copypaste** is not *BDD*!
+Beware: **copypaste** is not *BDD* (and is not programming)!
 
 
 !SLIDE
@@ -167,13 +169,13 @@ Rspec is designed to describe context-oriented logic
 
 *Business logic* is always context oriented
 
-Describe *non context-oriented logic* in rspec has **no benefits**
+Describe *non context*-oriented logic in rspec has **no benefits**
 
 !SLIDE
 
 ### What is context dependent logic?
 
-Context-oriented logic - from less context dependent to very context dependent:
+Context-oriented software - from less context dependent to very context dependent:
 
 * *Utility* functions
   * All math and any other function that doesn't data from nowhere except it's arguments.
@@ -360,26 +362,26 @@ Use to describe utitlity functions
 
 
 <div style="overflow: hidden; font-size: 16px">
-<div style=" padding-top: 0px"class="left" st>
-<pre style="font-family: monospace;">
+<div style="" class="left" st>
+@@@ ruby
+    
 
-
-    3
-
-
-
-
-  2   
-      4   6
+          4
 
 
 
+      2  
+        3   5   7
 
-        5
-1           7
-</pre></div>
 
-<div class="right">
+
+
+              6
+    1             8
+@@@
+</div>
+
+<div class="left">
 @@@ ruby
     describe Product do
     
@@ -405,6 +407,21 @@ Use to describe utitlity functions
     end
 @@@
 </div>
+<div class="left">
+
+<ol style="font-size: 20px">
+<li>Meet first example</li>
+<li>Seek for before block and call it</li>
+<li>Find subject call</li>
+<li>Call subject block</li>
+<li>Come back to before and discover _confirmed call</li>
+<li>Call _confirmed block</li>
+<li>Come back to before block and finish execution</li>
+<li>Run the matcher</li>
+
+</ol>
+
+</div>
 <div class="clear"></div>
 </div>
 
@@ -414,8 +431,7 @@ Use to describe utitlity functions
 ### Look and feel before and after
 
 
-<div style="font-size: 10px">
-
+<div style="font-size: 8px">
 
 
 <div class="left">
@@ -434,7 +450,8 @@ Use to describe utitlity functions
 
     describe "upcoming_matches" do
       it "should return upcoming match for particular student" do
-        @student1.upcoming_matches.first.id.should == @student2.upcoming_matches.first.id
+        @student1.upcoming_matches.first.id.should == 
+          @student2.upcoming_matches.first.id
       end
     end
 
@@ -510,9 +527,9 @@ Use to describe utitlity functions
 
 ##### Come back to: 
 
-### Custom matchers
+## Custom matchers
 
-##### A class with very clean api recognized by Rspec
+### A class with very clean api recognized by Rspec
 
 
 !SLIDE 
@@ -534,14 +551,13 @@ Use to describe utitlity functions
 
 There is a lot information on the web how to do that.
 
-We won't describe it here just know that it is fast and easy
 
 
 !SLIDE 
 
-### Shared examples group
+## Shared examples group
 
-##### Rspec counterpart to Ruby .include
+### Rspec counterpart to Ruby .include
 
 
 !SLIDE 
@@ -615,9 +631,8 @@ We can do all kinds of staff in SEG:
 !SLIDE 
 
 
-#### Summary
+## Summary
 
-### We need to structure things we learned
 
 
 !SLIDE image
@@ -694,9 +709,9 @@ That let *implement* the following *ideas*:
 
 !SLIDE 
 
-### The **end**
+## The **end**
 
-##### Bogdan Gusiev
-##### http://gusiev.com
-##### http://github.com/bogdan
+### Bogdan Gusiev
+#### [http://gusiev.com](http://gusiev.com)
+#### [http://github.com/bogdan](http://github.com/bogdan)
 

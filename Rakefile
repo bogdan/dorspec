@@ -38,7 +38,7 @@ task :dev do
       mtime = new_mtime
     end
     unless @__browser
-      puts "sensible-browser #{directory}/index.html" 
+      fork {"sensible-browser #{directory}/index.html"} 
       @__browser = true
     end
     sleep(0.1)
